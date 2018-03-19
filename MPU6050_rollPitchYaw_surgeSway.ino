@@ -72,7 +72,7 @@ void getData(char calibrated){  //if calibrated=0 then raw data returned, if =1 
 void calcAngle(){
   float aTotal;
   //bellow integrates gyro values to find absolute position
-  R+=gy*G_K;  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  R+=gy*G_K;  //////////// CODE THAT FOLLOWS MAY NEED CHANGING IF ORIENTATION IS CHANGED OR WRONG
   P+=gz*G_K;
   //bellow corrects roll/pitch from gimbal lock using yaw value 
   R+=P*sin(gx*G_K_rad);  //_rad is same as G_K*pi/180 (convert to rads)
@@ -121,7 +121,7 @@ void setup() {
   calibrate();  //get gyro offset values
   
   aTotal = sqrt((ax*ax)+(ay*ay)+(az*az));  //Calculate the total accelerometer vector then set initial pitch/roll values based on acc data
-  R=asin((float)az/aTotal)*57.296;////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  R=asin((float)az/aTotal)*57.296; //////////// CODE THAT FOLLOWS MAY NEED CHANGING IF ORIENTATION IS CHANGED OR WRONG
   P=asin((float)ay/aTotal)*-57.296;
   
   Serial.println("Setup Complete!");
